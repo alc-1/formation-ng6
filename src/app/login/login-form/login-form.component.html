@@ -1,0 +1,10 @@
+<div class="login-form">
+  <form class="login-form__form">
+    <div class="login-form__control">
+      <input #name type="text" autocomplete="username" placeholder="Votre nom d'utilisateur" autofocus="true" class="login-form__username">
+    </div>
+    <div class="login-form__control">
+      <button (click)="login(name)" type="submit" class="login-form__identify">S'identifier</button>
+    </div>
+  </form>
+</div>
