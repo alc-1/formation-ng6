@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  template: `
+    <h1 class="about view container">
+      About Page
+    </h1>
+  `,
+  styles: []
 })
 export class AboutComponent implements OnInit {
   constructor() {}
