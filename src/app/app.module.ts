@@ -8,6 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthenticationService } from './services/authentication.service';
+import { LocalStorageService, LocalStorageModule } from 'angular-2-local-storage';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,16 @@ import { MessagesComponent } from './messages/messages.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LocalStorageModule.forRoot({
+      prefix: 'formation-ng6',
+      storageType: 'localStorage'
+    })
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    AuthenticationService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
