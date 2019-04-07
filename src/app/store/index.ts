@@ -1,8 +1,8 @@
-import { ActionReducerMap, MetaReducer, ActionReducer } from '@ngrx/store';
+import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../../environments/environment';
 import { loginReducer, LoginState } from './reducers/login.reducer';
 import { messagesReducer, MessageState } from './reducers/messages.reducer';
-import { storeLogger } from 'ngrx-store-logger';
 
 export interface AppState {
   login: LoginState,

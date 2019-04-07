@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
-import { AuthGuardService } from './services/auth-guard.service';
 import { MessagesResolver } from './messages/messages.resolver';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
   {

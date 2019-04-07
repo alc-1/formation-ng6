@@ -1,6 +1,6 @@
-import {TestBed, inject, async} from '@angular/core/testing';
-import {MessageService} from './message.service';
-import {Http, HttpModule} from "@angular/http";
+import { inject, TestBed } from '@angular/core/testing';
+import { Http } from "@angular/http";
+import { MessageService } from './message.service';
 
 describe('MessageService', () => {
 
@@ -54,17 +54,17 @@ describe('MessageService', () => {
 
       const spy = spyOn(http, 'get').and.returnValue(observable);
 
-      service.getMessages().then(response => {
+      service.getMessages().subscribe((response) => {
         expect(spy).toHaveBeenCalledWith('http://fake.base.url');
-        expect(response).toEqual([{id: 1, content: 'fake content', author: 'fhi'}]);
+        expect(response).toEqual([{content: 'fake content', author: 'fhi'}]);
       })
     }));
 
   it('#createMessage should post new message and add it to `messages` property', inject([MessageService, Http],
     (service:MessageService, http:Http) => {
-      
+
       service.messagesUrl = 'http://fake.base.url';
-      
+
       const message = {content: 'hello world', author: 'abc'};
 
       const observable = {
@@ -77,9 +77,9 @@ describe('MessageService', () => {
 
       const spy = spyOn(http, 'post').and.returnValue(observable);
 
-      service.createMessage(message).then(() => {
+      service.createMessage(message).subscribe(() => {
         expect(spy).toHaveBeenCalledWith('http://fake.base.url', message);
-        expect(service.messages).toEqual([{id: 1, content: 'hello world', author: 'abc'}]);
+        expect(service.messages).toEqual([{content: 'hello world', author: 'abc'}]);
       })
     }));
 

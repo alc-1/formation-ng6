@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MessageInputComponent } from './message-input.component';
 import {MessageService} from '../../services/message.service';
-import {AuthenticationService} from "../../services/authentication.service";
 
 describe('MessageInputComponent', () => {
   let component: MessageInputComponent;
@@ -16,12 +15,11 @@ describe('MessageInputComponent', () => {
     };
     let authenticationServiceStub = {
     }
-    
+
     TestBed.configureTestingModule({
       declarations: [ MessageInputComponent ],
       providers: [
         {provide: MessageService, useValue: messageServiceStub},
-        {provide: AuthenticationService, useValue: authenticationServiceStub}
       ]
     })
     .compileComponents();

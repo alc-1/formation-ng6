@@ -1,7 +1,7 @@
 import { createSelector } from "@ngrx/store";
+import { Message } from "src/app/models/message.model";
 import { AppState } from "src/app/store";
 import { MessageState } from 'src/app/store/reducers/messages.reducer';
-import { Message } from "src/app/models/message.model";
 
 export const messageState$ = (state: AppState) => state.messages;
 

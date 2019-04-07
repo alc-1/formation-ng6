@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, switchMap, delay } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { Message } from 'src/app/models/message.model';
 import { MessageService } from 'src/app/services/message.service';
-import { ActionTypes, GetAllMessagesSuccess, MessageError, PostMessage, PostMessageSuccess, MessageErrorConsumed } from '../actions/messages.actions';
+import { ActionTypes, GetAllMessagesSuccess, MessageError, PostMessage, PostMessageSuccess } from '../actions/messages.actions';
 
 @Injectable()
 export class MessageEffects {
@@ -14,7 +14,7 @@ export class MessageEffects {
   ) {}
 
   @Effect()
-  getAllMessages = this.actions$
+  getAllMessages$ = this.actions$
     .pipe(
       ofType(ActionTypes.GetAllMessages),
       switchMap(() => {
@@ -27,7 +27,7 @@ export class MessageEffects {
     );
 
   @Effect()
-  postMessage = this.actions$
+  postMessage$ = this.actions$
     .pipe(
       ofType(ActionTypes.PostMessage),
       switchMap((action: PostMessage) => {
@@ -39,14 +39,6 @@ export class MessageEffects {
             catchError(() => of(new MessageError("Message error")))
           );
       })
-    );
-
-  @Effect()
-  consumeError = this.actions$
-    .pipe(
-      ofType(ActionTypes.MessageError),
-      map(() => new MessageErrorConsumed()),
-      delay(5000)
     );
 }
 

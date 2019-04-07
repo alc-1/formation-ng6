@@ -1,13 +1,12 @@
-import { User } from "src/app/models/user.model";
-import { ActionTypes } from "src/app/store/actions/messages.actions";
 import { Message } from "src/app/models/message.model";
+import { ActionTypes } from "src/app/store/actions/messages.actions";
 
 export interface MessageState {
   all: Message[];
   error: string;
 }
 
-const initState: MessageState = {
+export const initState: MessageState = {
   all: null,
   error: null
 }
@@ -21,9 +20,10 @@ export function messagesReducer( state: MessageState = initState, action ) {
         all
       }
     case ActionTypes.PostMessageSuccess:
+      const messages = !state.all ? [action.message] : [...state.all, action.message];
       return {
         ...state,
-        allMessages: [...state.all, action.message]
+        all: messages
       }
     case ActionTypes.MessageError:
       return {

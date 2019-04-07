@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { error$ } from '../store/selectors/messages.selectors';
 import { AppState } from '../store';
+import { MessageErrorConsumed } from '../store/actions/messages.actions';
 
 @Component({
   selector: 'error',
@@ -16,7 +17,11 @@ export class ErrorComponent implements OnInit {
   ngOnInit() {
     this.store.pipe(select(error$))
       .subscribe((error: string) => {
-        console.log(error)
+        if (error) {
+          setTimeout(() => {
+            this.store.dispatch(new MessageErrorConsumed())
+          }, 2000);
+        }
         this.message = error;
       })
   }

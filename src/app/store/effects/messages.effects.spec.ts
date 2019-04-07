@@ -1,25 +1,96 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { Http } from '@angular/http';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { cold, hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
+import { httpStub, httpStubWithError } from 'src/app/services/http.stub';
+import { MessageService } from 'src/app/services/message.service';
+import * as actions from '../actions/messages.actions';
+import { testMessage, testMessages } from '../state.test.data';
+import { MessageEffects } from './messages.effects';
 
-import { LoginEffects } from './login.effects';
-
-describe('AppEffects', () => {
+describe('Message Effects', () => {
   let actions$: Observable<any>;
-  let effects: LoginEffects;
+  let effects: MessageEffects;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        LoginEffects,
-        provideMockActions(() => actions$)
-      ]
+  describe('With healthy http requests', () => {
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [
+          MessageEffects,
+          provideMockActions(() => actions$),
+          MessageService,
+          {provide: Http, useValue: httpStub}
+        ]
+      });
+
+      effects = TestBed.get(MessageEffects);
     });
 
-    effects = TestBed.get(LoginEffects);
-  });
+    it('should be created', () => {
+      expect(effects).toBeTruthy();
+    });
 
-  it('should be created', () => {
-    expect(effects).toBeTruthy();
-  });
+    it('GetAllMessages should complete with GetAllMessageSuccess', () => {
+      const action = new actions.GetAllMessages();
+      const completion = new actions.GetAllMessagesSuccess(testMessages);
+
+      actions$ = hot('--a-', { a: action})
+      const expected = cold('--b', { b: completion });
+
+      expect(effects.getAllMessages$).toBeObservable(expected);
+    })
+
+    it('GetAllMessages should complete with GetAllMessageSuccess', () => {
+      const action = new actions.PostMessage(testMessage);
+      const completion = new actions.PostMessageSuccess(testMessage);
+
+      actions$ = hot('--a-', { a: action})
+      const expected = cold('--b', { b: completion });
+
+      expect(effects.postMessage$).toBeObservable(expected);
+    })
+  })
+
+  describe('With errors', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [
+          MessageEffects,
+          provideMockActions(() => actions$),
+          MessageService,
+          {provide: Http, useValue: httpStubWithError}
+        ]
+      });
+
+      effects = TestBed.get(MessageEffects);
+    });
+
+    it('should be created', () => {
+      expect(effects).toBeTruthy();
+    });
+
+    it('GetAllMessages action should catch a MessageError', () => {
+      const action = new actions.GetAllMessages();
+      const completion = new actions.MessageError('Message error');
+
+      actions$ = hot('--a', { a: action})
+      const expected = cold('--b', { b: completion });
+
+      expect(effects.getAllMessages$).toBeObservable(expected);
+    })
+
+    it('PostMessage action should catch a MessageError', () => {
+      const action = new actions.PostMessage(testMessage);
+      const completion = new actions.MessageError('Message error');
+
+      actions$ = hot('--a', { a: action})
+      const expected = cold('--b', { b: completion });
+
+      expect(effects.postMessage$).toBeObservable(expected);
+    })
+
+  })
+
 });

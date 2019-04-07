@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MessageItemComponent } from './message-item.component';
+import { Message } from 'src/app/models/message.model';
 
 describe('MessageItemComponent', () => {
   let component: MessageItemComponent;
@@ -16,7 +17,7 @@ describe('MessageItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MessageItemComponent);
     component = fixture.componentInstance;
-    component.message = {id: 42, author: 'flm', content: 'message content'};
+    component.message = {author: 'flm', content: 'message content'} as Message;
     fixture.detectChanges();
   });
 
