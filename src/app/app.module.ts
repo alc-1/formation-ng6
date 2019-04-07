@@ -6,11 +6,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
+import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { LoginComponent } from './components/login/login.component';
+import { MessagesComponent } from './components/messages/messages.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 import { metaReducers, reducers } from './store';
-import { LoginFormComponent } from './components/login/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { LoginFormComponent } from './components/login/login-form/login-form.com
     NotFoundComponent,
     LoginComponent,
     NavigationBarComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import { LoginFormComponent } from './components/login/login-form/login-form.com
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument(),
   ],
-  providers: [],
+  providers: [
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
