@@ -3,9 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'about',
   template: `
-    <h1 class="about view container">
-      About Page
-    </h1>
+    <section class="about view container">
+      <h1>
+        About Page
+      </h1>
+      <p >
+        Has autem provincias, quas Orontes ambiens amnis
+        imosque pedes Cassii montis illius celsi praetermeans
+        funditur in Parthenium mare, Gnaeus Pompeius superato
+        Tigrane regnis Armeniorum abstractas dicioni Romanae
+        coniunxit.
+      </p>
+    </section>
   `,
   styles: []
 })

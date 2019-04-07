@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
+import { LoginState } from '../store/reducers/login.reducer';
+import { Store, select } from '@ngrx/store';
+import { isLoggedIn$ } from 'src/app/store/selectors/login.selectors';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-  constructor(public auth: AuthenticationService, public router: Router) {}
+  isLoggedIn: boolean;
+
+  constructor(private store: Store<LoginState>, public router: Router) {
+    this.store.pipe(select(isLoggedIn$))
+      .subscribe((isLoggedIn: boolean) => {
+        this.isLoggedIn = isLoggedIn;
+      });
+  }
 
   canActivate(): boolean {
-    if (!this.auth.isLoggedIn()) {
+    if (!this.isLoggedIn) {
       this.router.navigate(['login']);
-      return false;
     }
-    return true;
+    return this.isLoggedIn
   }
 
 }

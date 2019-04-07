@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { LoginState } from 'src/app/store/reducers/login.reducer';
+import { Login } from 'src/app/store/actions/login.actions';
+
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'login-form',
@@ -8,12 +11,12 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private store: Store<LoginState>) { }
 
   ngOnInit() {
   }
 
   login(input: HTMLInputElement): void {
-    this.authService.login(input.value);
+    this.store.dispatch(new Login(input.value))
   }
 }

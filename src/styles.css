@@ -296,3 +296,21 @@ input {
   margin-right: 2px;
   font-size: 20px;
 }
+
+/********************************************
+* Error
+*********************************************/
+.error {
+  color: #66757f;
+  background-color: #ffffff;
+  border: 1px solid #ff0000;
+  text-transform: uppercase;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
+  width: 250px;
+  height: 15px;
+  float: bottom;
+  text-align: center;
+  border-radius: 5px;
+}

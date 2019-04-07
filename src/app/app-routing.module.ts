@@ -5,12 +5,14 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { MessagesResolver } from './messages/messages.resolver';
 
 export const routes: Routes = [
   {
     path: '',
     component: MessagesComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    resolve: [MessagesResolver]
   },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
