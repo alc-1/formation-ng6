@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'formation-ng6'`, () => {
+  it(`should have as title 'Formation Angaular 6'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('formation-ng6');
+    expect(app.title).toEqual('Formation Angaular 6');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to formation-ng6!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Formation Angaular 6!');
   });
 });
