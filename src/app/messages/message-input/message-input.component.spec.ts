@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Store, StoreModule } from '@ngrx/store';
 import { AppState, reducers } from 'src/app/store';
 import { MessageInputComponent } from './message-input.component';
+import { Subscription } from 'rxjs';
 
 describe('MessageInputComponent', () => {
   let component: MessageInputComponent;

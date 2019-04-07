@@ -4,6 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing/';
 import { NavigationBarComponent } from './navigation-bar.component';
 import { StoreModule, Store } from '@ngrx/store';
 import { AppState, reducers } from '../store';
+import { routesStub, MockComponent } from 'src/app/routes.stub';
+import { Logout, Login } from '../store/actions/login.actions';
 
 describe('NavigationBarComponent', () => {
   let component: NavigationBarComponent;
@@ -12,16 +14,19 @@ describe('NavigationBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationBarComponent ],
+      declarations: [
+        NavigationBarComponent,
+        MockComponent
+      ],
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routesStub),
         StoreModule.forRoot(reducers)
       ],
     })
     .compileComponents();
 
     store = TestBed.get(Store);
-    spyOn(store, 'dispatch');
+    spyOn(store, 'dispatch').and.callThrough();
   }));
 
   beforeEach(() => {
@@ -31,23 +36,18 @@ describe('NavigationBarComponent', () => {
   });
 
   describe('Component', () => {
-    it('#logout should call logout service', () => {
-      //let service = fixture.debugElement.injector.get(AuthenticationService);
-      //spyOn(service, 'logout');
+    it('#logout should dispatch a logout action', () => {
       component.logout();
-      //expect(service.logout).toHaveBeenCalled();
+      expect(store.dispatch).toHaveBeenCalledWith(new Logout());
     });
 
     it('#isLoggedIn should return true if loggedIn', () => {
-      //let service = fixture.debugElement.injector.get(AuthenticationService);
-      //spyOn(service, 'isLoggedIn').and.returnValue(true);
-      //expect(component.isLoggedIn()).toBe(true);
+      store.dispatch(new Login('Toto'));
+      expect(component.isLoggedIn).toBe(true);
     });
 
     it('#isLoggedIn should return false if loggedOut', () => {
-      //let service = fixture.debugElement.injector.get(AuthenticationService);
-      //spyOn(service, 'isLoggedIn').and.returnValue(false);
-      //expect(component.isLoggedIn()).toBe(false);
+      expect(component.isLoggedIn).toBe(false);
     });
   });
 

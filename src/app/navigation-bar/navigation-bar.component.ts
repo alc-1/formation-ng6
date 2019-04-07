@@ -32,7 +32,9 @@ export class NavigationBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.logginSubscription.unsubscribe();
+    if (this.logginSubscription) {
+      this.logginSubscription.unsubscribe();
+    }
   }
 
 }

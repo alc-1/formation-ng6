@@ -25,6 +25,8 @@ export class MessageListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.messagesSubscription.unsubscribe();
+    if (this.messagesSubscription) {
+      this.messagesSubscription.unsubscribe();
+    }
   }
 }

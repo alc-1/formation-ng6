@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Store, StoreModule } from '@ngrx/store';
 import { AppState, reducers } from 'src/app/store';
 import { LoginFormComponent } from './login-form.component';
+import { routesStub, MockComponent } from 'src/app/routes.stub';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
@@ -11,11 +12,11 @@ describe('LoginFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [LoginFormComponent, MockComponent],
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routesStub),
         StoreModule.forRoot(reducers)
       ],
-      declarations: [LoginFormComponent]
     }).compileComponents();
 
     store = TestBed.get(Store);

@@ -1,11 +1,12 @@
-import { TestBed, inject } from '@angular/core/testing';
-
-import { AuthGuardService } from './auth-guard.service';
+import { inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { StoreModule, Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
+import { routesStub, MockComponent } from 'src/app/routes.stub';
 import { reducers } from '../store';
-import { LoginState } from '../store/reducers/login.reducer';
 import { Login } from '../store/actions/login.actions';
+import { LoginState } from '../store/reducers/login.reducer';
+import { AuthGuardService } from './auth-guard.service';
+
 
 describe('AuthGuardService', () => {
 
@@ -13,8 +14,9 @@ describe('AuthGuardService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [MockComponent],
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routesStub),
         StoreModule.forRoot(reducers)
       ],
       providers: [
@@ -22,6 +24,7 @@ describe('AuthGuardService', () => {
       ],
     });
     store = TestBed.get(Store);
+
   });
 
   it('should be created', () => {

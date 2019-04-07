@@ -6,6 +6,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { AppState, reducers } from './store';
 import { Login } from './store/actions/login.actions';
+import { routesStub, MockComponent } from './routes.stub';
 
 describe('AppComponent', () => {
 
@@ -16,9 +17,9 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [AppComponent, MockComponent],
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routesStub),
         StoreModule.forRoot(reducers)
       ],
       schemas: [NO_ERRORS_SCHEMA]
