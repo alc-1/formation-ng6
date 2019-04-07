@@ -1,57 +1,37 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store, StoreModule } from '@ngrx/store';
+import { reducers } from 'src/app/store';
+import { MessageState } from 'src/app/store/reducers/messages.reducer';
 import { MessageListComponent } from './message-list.component';
-import { MessageItemComponent } from "../message-item/message-item.component";
-import {MessageInputComponent} from "../message-input/message-input.component";
-import {MessageService} from '../../services/message.service';
 
 describe('MessageListComponent', () => {
   let component: MessageListComponent;
   let fixture: ComponentFixture<MessageListComponent>;
-
-  beforeEach(async(() => {
-    let messageServiceStub = {
-      getMessages()  {
-        return Promise.resolve([
-          {id: 35, author: 'won', content: 'fake message'}
-        ]);
-      }
-    };
-
-    TestBed.configureTestingModule({
-      declarations: [
-        MessageListComponent,
-        MessageItemComponent,
-        MessageInputComponent
-      ],
-      providers: [{provide: MessageService, useValue: messageServiceStub}]
-    })
-    .compileComponents();
-  }));
+  let store: Store<MessageState>;
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        MessageListComponent
+      ],
+      imports: [
+        StoreModule.forRoot(reducers)
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(MessageListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = fixture.debugElement.componentInstance;
+
+    store = TestBed.get(Store);
+    spyOn(store, 'dispatch').and.callThrough();
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should call get messages on ngInit', async(() => {
-    //spyOn(component, 'getMessages');
-    component.ngOnInit();
-    //expect(component.getMessages).toHaveBeenCalled();
-  }));
-
-  it(`should set 'messages' property when promise resolves`, async(() => {
-    /*component.getMessages().then(() => {
-      expect(component.messages).toEqual([
-        {id: 35, author: 'won', content: 'fake message'}
-      ]);
-    });
-    */
-  }));
 
 });

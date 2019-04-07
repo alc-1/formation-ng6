@@ -17,14 +17,14 @@ export class MessageInputComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   user: User;
 
-  constructor(
-    private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.userSubscription = this.store.pipe(select(user$))
-      .subscribe((user) => {
-        this.user = user;
-      })
+    this.userSubscription = this.store
+      .pipe(select(user$))
+        .subscribe((user) => {
+          this.user = user;
+        })
   }
 
   addMessage(content: HTMLInputElement) {

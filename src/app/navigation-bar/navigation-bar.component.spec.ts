@@ -1,23 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from "@angular/platform-browser";
+import { RouterTestingModule } from '@angular/router/testing/';
 import { NavigationBarComponent } from './navigation-bar.component';
-import {RouterTestingModule} from '@angular/router/testing/';
-import {By} from "@angular/platform-browser";
+import { StoreModule, Store } from '@ngrx/store';
+import { AppState, reducers } from '../store';
 
 describe('NavigationBarComponent', () => {
   let component: NavigationBarComponent;
   let fixture: ComponentFixture<NavigationBarComponent>;
-  let authenticationServiceStub;
+  let store: Store<AppState>;
 
   beforeEach(async(() => {
-    authenticationServiceStub = {
-      logout() {},
-      isLoggedIn() {}
-    };
     TestBed.configureTestingModule({
       declarations: [ NavigationBarComponent ],
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        StoreModule.forRoot(reducers)
+      ],
     })
     .compileComponents();
+
+    store = TestBed.get(Store);
+    spyOn(store, 'dispatch');
   }));
 
   beforeEach(() => {
@@ -50,9 +54,7 @@ describe('NavigationBarComponent', () => {
   describe('Template', () => {
 
     it('Should show logout link if logged in', () => {
-
-      //const service = fixture.debugElement.injector.get(AuthenticationService);
-      //spyOn(service, 'isLoggedIn').and.returnValue(true);
+      component.loggedIn = true;
       fixture.detectChanges();
 
       const logoutElement = fixture.debugElement.query(By.css('#navigation-bar__logout'));
@@ -60,8 +62,7 @@ describe('NavigationBarComponent', () => {
     });
 
     it('Should not show logout link if not logged in', () => {
-      //const service = fixture.debugElement.injector.get(AuthenticationService);
-      //spyOn(service, 'isLoggedIn').and.returnValue(false);
+      component.loggedIn = false;
       fixture.detectChanges();
 
       const logoutElement = fixture.debugElement.query(By.css('#navigation-bar__logout'));

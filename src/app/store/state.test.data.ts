@@ -12,6 +12,11 @@ export const testMessages = [
   new Message('Toto', '?')
 ];
 
+export const twoTestMessages = [
+  new Message('Toto', 'Salut'),
+  new Message('Toto', 'Comment')
+];
+
 export const testMessage = new Message('Toto', 'Salut');
 
 /**
@@ -19,6 +24,11 @@ export const testMessage = new Message('Toto', 'Salut');
  */
 export const messageState: MessageState = {
   all: testMessages,
+  error: null
+}
+
+export const messageStateWithTwoMessages: MessageState = {
+  all: twoTestMessages,
   error: null
 }
 

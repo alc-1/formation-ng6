@@ -8,7 +8,6 @@ import { Message } from "../models/message.model";
 export class MessageService {
 
   messagesUrl = 'http://microblog-api.herokuapp.com/api/messages';
-  messages:Message[] = [];
 
   constructor(private http:Http) {}
 

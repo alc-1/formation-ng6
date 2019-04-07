@@ -23,12 +23,14 @@ describe('AppComponent', () => {
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
+
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.debugElement.componentInstance;
-    store = TestBed.get(Store);
     router = TestBed.get(Router);
+    store = TestBed.get(Store);
     spyOn(store, 'dispatch').and.callThrough();
     spyOn(router, 'navigate');
+
   }));
 
   it('should create the app', () => {
@@ -41,7 +43,7 @@ describe('AppComponent', () => {
   });
 
   it('should navigate to / when a user log in', () => {
-    store.dispatch(new Login('Arnaud'));
+    store.dispatch(new Login('Toto'));
     fixture.detectChanges();
     expect(router.navigate).toHaveBeenCalledWith(['/']);
   })

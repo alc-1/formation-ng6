@@ -1,7 +1,12 @@
 import { Message } from 'src/app/models/message.model';
 import * as actions from '../actions/messages.actions';
-import { messageState, messageStateWithoutMessages, testMessages } from '../state.test.data';
 import * as reducers from './messages.reducer';
+import {
+  messageState,
+  messageStateWithoutMessages,
+  messageStateWithTwoMessages,
+  testMessages
+} from '../state.test.data';
 
 describe('message reducers', () => {
 
@@ -39,8 +44,8 @@ describe('message reducers', () => {
 
   it('Get all messages success should replace all messages', () => {
     const action = new actions.GetAllMessagesSuccess(testMessages);
-    const newState = reducers.messagesReducer(messageState, action);
-    expect(messageState.all.length).toEqual(2);
+    const newState = reducers.messagesReducer(messageStateWithTwoMessages, action);
+    expect(messageStateWithTwoMessages.all.length).toEqual(2);
     expect(newState.all.length).toEqual(5);
   })
 
