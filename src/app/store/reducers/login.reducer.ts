@@ -3,27 +3,19 @@ import { ActionTypes } from "src/app/store/actions/login.actions";
 
 export interface LoginState {
   user: User;
-  error: string;
 }
 
 const initState: LoginState = {
   user: null,
-  error: null
 }
 
 export function loginReducer( state:LoginState = initState, action ) {
   switch( action.type ) {
     case ActionTypes.Login:
       const user = new User(action.name);
-      return {
-        ...state,
-        user
-      }
+      return { user }
     case ActionTypes.Logout:
-      return {
-        ...state,
-        user: null
-      }
+      return { user: null }
     default:
       return state;
   }

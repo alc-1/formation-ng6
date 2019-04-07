@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
-import { LoginState } from '../store/reducers/login.reducer';
-import { Store, select } from '@ngrx/store';
+import { CanActivate, Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import { isLoggedIn$ } from 'src/app/store/selectors/login.selectors';
+import { LoginState } from '../store/reducers/login.reducer';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {

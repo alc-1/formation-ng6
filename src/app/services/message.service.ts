@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Message} from "../models/message.model";
-import {Http} from "@angular/http";
-import { Observable, of, pipe } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Http } from "@angular/http";
+import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Message } from "../models/message.model";
 
 @Injectable()
 export class MessageService {
@@ -18,9 +18,6 @@ export class MessageService {
         map((response) => {
           const body = response.json();
           return body.map((json) => new Message(json.author, json.content))
-        }),
-        catchError((error) => {
-          return error;
         })
       );
   }
@@ -31,10 +28,7 @@ export class MessageService {
         map(response => {
           const body = response.json();
           return new Message(body.author, body.content);
-        }),
-        catchError((error) => {
-          return error;
-        }),
+        })
       );
   }
 }

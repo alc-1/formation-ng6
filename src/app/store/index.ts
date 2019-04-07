@@ -1,14 +1,12 @@
-import {
-  ActionReducerMap,
-  MetaReducer
-} from '@ngrx/store';
+import { ActionReducerMap, MetaReducer, ActionReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { LoginState, loginReducer }  from './reducers/login.reducer';
-import { MessagesState, messagesReducer } from './reducers/messages.reducer';
+import { loginReducer, LoginState } from './reducers/login.reducer';
+import { messagesReducer, MessageState } from './reducers/messages.reducer';
+import { storeLogger } from 'ngrx-store-logger';
 
 export interface AppState {
   login: LoginState,
-  messages: MessagesState,
+  messages: MessageState,
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -16,4 +14,9 @@ export const reducers: ActionReducerMap<AppState> = {
   messages: messagesReducer
 };
 
-export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
+// can replace ngrx-devtools
+export function logger(reducer: ActionReducer<AppState>){
+  return storeLogger()(reducer);
+}
+
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [logger] : [];

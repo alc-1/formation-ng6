@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { LoginState } from '../store/reducers/login.reducer';
-import { isLoggedIn$ } from '../store/selectors/login.selectors';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Logout } from '../store/actions/login.actions';
+import { LoginState } from '../store/reducers/login.reducer';
+import { isLoggedIn$ } from '../store/selectors/login.selectors';
 
 @Component({
   selector: 'navigation-bar',

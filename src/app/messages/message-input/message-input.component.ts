@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AppState } from 'src/app/store';
-import { Store, select } from '@ngrx/store';
-import { User } from 'src/app/models/user.model';
-import { user$ } from 'src/app/store/selectors/login.selectors';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { PostMessage } from 'src/app/store/actions/messages.actions';
 import { Message } from 'src/app/models/message.model';
+import { User } from 'src/app/models/user.model';
+import { AppState } from 'src/app/store';
+import { PostMessage } from 'src/app/store/actions/messages.actions';
+import { user$ } from 'src/app/store/selectors/login.selectors';
 
 @Component({
   selector: 'message-input',

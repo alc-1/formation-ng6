@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginState } from 'src/app/store/reducers/login.reducer';
-import { Login } from 'src/app/store/actions/login.actions';
-
 import { Store } from '@ngrx/store';
+import { Login } from 'src/app/store/actions/login.actions';
+import { LoginState } from 'src/app/store/reducers/login.reducer';
+
 
 @Component({
   selector: 'login-form',

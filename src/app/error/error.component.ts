@@ -1,9 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { error$ } from '../store/selectors/messages.selectors';
 import { AppState } from '../store';
-import { LoginState } from '../store/reducers/login.reducer';
-import { error$ } from '../store/selectors/login.selectors';
-import { delay, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'error',
@@ -13,19 +11,13 @@ import { delay, map, tap } from 'rxjs/operators';
 export class ErrorComponent implements OnInit {
   message: string;
 
-  constructor(private store: Store<LoginState>) {
-  }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.store.pipe(select(error$))
       .subscribe((error: string) => {
         console.log(error)
         this.message = error;
-        setTimeout(() => {
-          this.message = null;
-        }, 10000)
       })
   }
-
-
 }

@@ -7,6 +7,7 @@ export enum ActionTypes {
   GetAllMessages = '[Message Page] Get all messages',
   GetAllMessagesSuccess = '[Message Page] Get all messages success',
   MessageError = '[Message Page] Message error',
+  MessageErrorConsumed = '[Message Page] Message error consumed',
 }
 
 export class PostMessage implements Action {
@@ -38,9 +39,15 @@ export class MessageError implements Action {
 
   constructor(public error: string) {}
 }
+export class MessageErrorConsumed implements Action {
+  readonly type = ActionTypes.MessageErrorConsumed;
+
+  constructor() {}
+}
 
 export type MessageActions = PostMessage |
   PostMessageSuccess |
   GetAllMessages |
   GetAllMessagesSuccess |
-  MessageError;
+  MessageError |
+  MessageErrorConsumed;
