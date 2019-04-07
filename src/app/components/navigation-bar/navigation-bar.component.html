@@ -18,6 +18,12 @@
             <span class="navigation-bar__link-label">{{ 'About' }}</span>
           </a>
         </li>
+        <li *ngIf="isLoggedIn" id="navigation-bar__logout" class="navigation-bar__li" (click)="logout()">
+          <a class="navigation-bar__link navigation-bar__link--logout">
+            <i aria-hidden="true"  class="navigation-bar__link-icon fa fa-power-off ember-view"></i>
+            <span class="navigation-bar__link-label">{{ 'Logout' }}</span>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
