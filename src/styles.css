@@ -1,1 +1,317 @@
 /* You can add global styles to this file, and also import other style files */
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+
+/********************************************
+* App
+*********************************************/
+body {
+  font-size: 14px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #f5f8fa;
+}
+
+a {
+  color: #666;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input {
+  font-size: 14px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  color: #666;
+  padding: 4px 14px;
+  border: 1px solid #99CDE1;
+}
+
+*:focus {
+  outline: none;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+}
+
+.view {
+  padding: 56px 0 0;
+}
+
+.container {
+  width: 600px;
+}
+
+/********************************************
+* Login
+*********************************************/
+.login {
+  background-color: #ffffff;
+  color: #8899a6;
+  border-radius: 5px;
+  border: 1px solid #e1e8ed;
+  width: 400px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 150px;
+}
+
+.login-header {
+  text-align: center;
+}
+
+.login-header__logo {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #e1e8ed;
+  display: inline-block;
+  margin-top: -50px;
+}
+
+.login-header__logo-image {
+  width: 80px;
+}
+
+.login-body__description {
+  padding: 6px 20px;
+}
+
+.login-body__form {
+  text-align: center;
+  padding: 20px 20px 40px;
+  border-top: 1px solid #eee;
+}
+
+@media (min-width: 568px) {
+}
+
+/********************************************
+* Login form
+*********************************************/
+.login-form {
+  width: 260px;
+  display: inline-block;
+}
+
+.login-form__username {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background .2s linear;
+  padding: 4px 10px;
+  outline: 0;
+  background-color: #ffffff;
+  border-radius: 3px;
+  font-size: 13px;
+  line-height: 20px;
+  margin: 0 0 10px;
+}
+
+.login-form__username:focus {
+  border-color: #1da1f2;
+}
+
+.login-form__identify {
+  background-color: #1da1f2;
+  color: #ffffff;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background .2s linear;
+  margin: 0;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: normal;
+  padding: 11px 16px;
+}
+
+.login-form__identificate:active {
+  background-color: #3b88c3;
+}
+
+/********************************************
+* Message container
+*********************************************/
+.messages__footer {
+  font-size: 12px;
+  background-color: #f5f8fa;
+  border: 1px solid #e1e8ed;
+  border-top: none;
+  padding: 15px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #8899a6;
+  text-align: center;
+}
+
+.messages__footer-link {
+  color: #0084b4;
+}
+.messages__footer-link:hover {
+  text-decoration: underline;
+}
+
+/********************************************
+* Message input
+*********************************************/
+.message-input {
+  border: 1px solid #e1e8ed;
+  background-color: #E5F2F7;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.message-input__content {
+  width: 100%;
+  box-sizing : border-box;
+  padding: 8px 10px;
+  border: 1px solid #99CDE1;
+}
+
+.message-input__content:focus {
+  border-color: #56b4ef;
+}
+
+/********************************************
+* Message input
+*********************************************/
+.message-item {
+  padding: 10px;
+  line-height: 18px;
+  color: #292f33;
+  background-color: #ffffff;
+  list-style-type: none;
+  border: 1px solid #e1e8ed;
+  border-top: none;
+}
+
+.message-item__author {
+  display: block;
+  font-weight: 600;
+}
+
+.message-item__content {
+  display: block;
+}
+
+/********************************************
+* Message list
+*********************************************/
+.message-list {
+}
+
+.message-list__empty {
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #e1e8ed;
+  border-top: none;
+}
+
+.message-list__ul {
+  padding: 0;
+  margin: 0;
+  border-top: none;
+  border-bottom: none;
+}
+
+.message-list__li {
+  list-style-type: none;
+}
+
+/********************************************
+* Navigation bar
+*********************************************/
+.navigation-bar {
+  backface-visibility: hidden;
+  border-bottom: 1px solid #cdcdcd;
+  box-shadow: 1px 0 1px rgba(0,0,0,0.25);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-bar__ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navigation-bar__li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  height: 46px;
+  color: #66757f;
+  overflow: hidden;
+}
+
+.navigation-bar__link {
+  text-align: center;
+  height: 46px;
+  border-bottom: 5px solid #0084b4;
+  transition: all .15s ease-in-out;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0 14px 0 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-bar__link.active {
+  height: 42px;
+}
+
+.navigation-bar__link:hover {
+  height: 42px;
+  color: #0084B4;
+}
+
+.navigation-bar__link-label {
+  margin-left: 3px;
+  margin-top: 17px;
+}
+
+.navigation-bar__link-icon {
+  margin-left: 3px;
+  margin-top: 13px;
+  margin-right: 2px;
+  font-size: 20px;
+}
+
+/********************************************
+* Error
+*********************************************/
+.error {
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #f77; /* Black background color */
+  background-color: #f77; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 4px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  right: 2%; /* Center the snackbar */
+  top: 10%; /* 30px from the bottom */
+  box-shadow: 0 3px 6px rgba(#000, .16), 0 3px 6px rgba(#000, .23) ;
+}
