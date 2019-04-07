@@ -1,0 +1,8 @@
+<div class="message-list">
+  <ul class="message-list__ul">
+    <li *ngFor="let message of messages" class="message-list__li">
+      <message-item [message]="message"></message-item>
+    </li>
+  </ul>
+</div>
+
