@@ -1,0 +1,24 @@
+<div class="navigation-bar">
+  <div class="navigation-bar__inner container">
+
+    <div class="navigation-bar__brand">
+
+    </div>
+    <div class="navigation-bar__links">
+      <ul class="navigation-bar__ul">
+        <li class="navigation-bar__li">
+          <a routerLink="/" class="navigation-bar__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i aria-hidden="true"  class="navigation-bar__link-icon fa fa-home"></i>
+            <span class="navigation-bar__link-label">{{ 'Home' }}</span>
+          </a>
+        </li>
+        <li class="navigation-bar__li">
+          <a routerLink="/about" class="navigation-bar__link" routerLinkActive="active">
+            <i aria-hidden="true"  class="navigation-bar__link-icon fa fa-info-circle"></i>
+            <span class="navigation-bar__link-label">{{ 'About' }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
