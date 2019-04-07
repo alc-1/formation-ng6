@@ -2,13 +2,16 @@ import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../../environments/environment';
 import { loginReducer, LoginState } from './reducers/login.reducer';
+import { MessageState, messagesReducer } from './reducers/messages.reducer';
 
 export interface AppState {
   login: LoginState,
+  messages: MessageState,
 }
 
 export const reducers: ActionReducerMap<AppState> = {
   login: loginReducer,
+  messages: messagesReducer
 };
 
 // can replace ngrx-devtools
