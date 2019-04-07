@@ -10,4 +10,11 @@ describe('login actions', () => {
     });
   });
 
+  it('Login action creator should return an object of type Logout without payload', () => {
+    const action = new actions.Logout();
+    expect({...action}).toEqual({
+      type: actions.ActionTypes.Logout,
+    });
+  });
+
 });
