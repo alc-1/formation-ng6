@@ -1,34 +1,44 @@
-# FormationNg6
+# Formation Angular 6
+
+## Summary
+
+* [About](#about)
+* [Course steps](#courseSteps)
+  * [1 - Create a routing module](#createRoutingModule)
+  * [2 - Create a Home component](#createHomeComponent)
+
+
+## <a name="about"></a>About the project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.9.
 
-## Development server
+### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Course steps
+## <a name="courseSteps"></a>Course steps
 
-### 1: Create a routing module
+### <a name="createRoutingModule"></a>1: Create a routing module
 
 ```shell
 ng generate module app-routing --flat --module=app
@@ -37,7 +47,7 @@ ng generate module app-routing --flat --module=app
 Use `--flat` to prevent the generator to create a new directory.  
 Use `--module=app` to tell that the module should be imported by the AppModule.
 
-### 2: Create a Home component and make the routing module load it
+### <a name="createHomeComponent"></a>2: Create a Home component and make the routing module load it
 
 1. Create the Home component.
 
