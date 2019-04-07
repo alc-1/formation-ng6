@@ -1,5 +1,5 @@
-import { User } from "src/app/shared/models/user.model";
-import { ActionTypes } from "src/app/store/actions/login.actions";
+import { User } from 'src/app/shared/models/user.model';
+import { ActionTypes } from 'src/app/store/actions/login.actions';
 
 export interface LoginState {
   user: User;
@@ -14,6 +14,8 @@ export function loginReducer( state:LoginState = initState, action ) {
     case ActionTypes.Login:
       const user = new User(action.name);
       return { user };
+    case ActionTypes.Logout:
+      return { user: null };
     default:
       return state;
   }

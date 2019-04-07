@@ -1,6 +1,6 @@
 import { User } from 'src/app/shared/models/user.model';
 import * as actions from '../actions/login.actions';
-import { loginStateWithoutUser } from '../state.test.data';
+import { loginStateWithoutUser, loginState } from '../state.test.data';
 import * as reducers from './login.reducer';
 
 describe('login reducers', () => {
@@ -13,6 +13,12 @@ describe('login reducers', () => {
     };
     const newState = reducers.loginReducer(loginStateWithoutUser, action);
     expect(newState).toEqual(expectedState);
+  });
+
+  it('Logout should remove the user from the login state', () => {
+    const action = new actions.Logout();
+    const newState = reducers.loginReducer(loginState, action);
+    expect(newState).toEqual(loginStateWithoutUser);
   });
 
 });
