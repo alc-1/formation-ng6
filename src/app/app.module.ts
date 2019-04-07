@@ -13,6 +13,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { metaReducers, reducers } from './store';
+import { MessageService } from './shared/services/message.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { metaReducers, reducers } from './store';
     StoreDevtoolsModule.instrument(),
   ],
   providers: [
-    AuthGuardService
+    AuthGuardService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
