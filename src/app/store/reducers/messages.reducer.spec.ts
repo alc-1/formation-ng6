@@ -2,7 +2,8 @@ import * as actions from '../actions/messages.actions';
 import {
   messageStateWithoutMessages,
   messageStateWithTwoMessages,
-  testMessages
+  testMessages,
+  messageState
 } from '../state.test.data';
 import * as reducers from './messages.reducer';
 import { Message } from 'src/app/shared/models/message.model';
@@ -61,4 +62,11 @@ describe('message reducers', () => {
     );
     expect(newState).toEqual(expectedState);
   });
+
+  it('Message error should store an error message in the state', () => {
+    const action = new actions.MessageError('Error message');
+    const newState = reducers.messagesReducer(messageState, action);
+    expect(newState.error).toBe('Error message');
+  });
+
 });
