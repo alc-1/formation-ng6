@@ -34,4 +34,19 @@ describe('Messages actions', () => {
       message: testMessage
     });
   });
+
+  it('MessageError should return an action of type MessageError with an error message as payload', () => {
+    const action = new actions.MessageError('Error message');
+    expect({ ...action }).toEqual({
+      type: actions.ActionTypes.MessageError,
+      error: 'Error message'
+    });
+  });
+
+  it('MessageErrorConsumed should return an action of type MessageErrorConsumed', () => {
+    const action = new actions.MessageErrorConsumed();
+    expect({ ...action }).toEqual({
+      type: actions.ActionTypes.MessageErrorConsumed
+    });
+  });
 });
