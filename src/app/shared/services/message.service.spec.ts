@@ -1,7 +1,7 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { Http } from '@angular/http';
 import { of } from 'rxjs';
-import { testMessages } from 'src/app/store/state.test.data';
+import { testMessages, testMessage } from 'src/app/store/state.test.data';
 import { httpStub } from './http.stub';
 import { MessageService } from './message.service';
 
@@ -39,6 +39,22 @@ describe('MessageService', () => {
       service.getMessages().subscribe(response => {
         expect(spy).toHaveBeenCalledWith('http://fake.base.url');
         expect(response).toEqual(testMessages);
+      });
+    }
+  ));
+
+  it('#createMessage should post new message and add it to `messages` property', inject(
+    [MessageService, Http],
+    (service: MessageService, http: Http) => {
+      service.messagesUrl = 'http://fake.base.url';
+
+      const message = testMessage;
+      const observable = of({ json: () => testMessage });
+      const spy = spyOn(http, 'post').and.returnValue(observable);
+
+      service.createMessage(message).subscribe(response => {
+        expect(spy).toHaveBeenCalledWith('http://fake.base.url', message);
+        expect(response).toEqual(testMessage);
       });
     }
   ));
