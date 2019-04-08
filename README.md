@@ -2,13 +2,18 @@
 
 ## Summary
 
-* [About](#about)
-* [Course steps](#courseSteps)
-  * [1 - Create a routing module](#createRoutingModule)
-  * [2 - Create a Home component](#createHomeComponent)
+- [About the project](#about-the-project)
+  - [Development server](#development-server)
+  - [Code scaffolding](#code-scaffolding)
+  - [Build](#build)
+  - [Running unit tests](#running-unit-tests)
+  - [Running end-to-end tests](#running-end-to-end-tests)
+  - [Further help](#further-help)
+- [Course steps](#course-steps)
+  - [1: Create a routing module](#1-create-a-routing-module)
+  - [2: Create a Home component and make the routing module load it](#2-create-a-home-component-and-make-the-routing-module-load-it)
 
-
-## <a name="about"></a>About the project
+## About the project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.9.
 
@@ -36,9 +41,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## <a name="courseSteps"></a>Course steps
+## Course steps
 
-### <a name="createRoutingModule"></a>1: Create a routing module
+### 1: Create a routing module
 
 ```shell
 ng generate module app-routing --flat --module=app
@@ -47,7 +52,7 @@ ng generate module app-routing --flat --module=app
 Use `--flat` to prevent the generator to create a new directory.  
 Use `--module=app` to tell that the module should be imported by the AppModule.
 
-### <a name="createHomeComponent"></a>2: Create a Home component and make the routing module load it
+### 2: Create a Home component and make the routing module load it
 
 1. Create the Home component.
 
@@ -98,5 +103,5 @@ Use `--module=app` to tell that the module should be imported by the AppModule.
     ```
 
 7. Bonus steps  
-    * Move the HTML content of app.component.html to home.component.html
-    * Add `schemas: [NO_ERRORS_SCHEMA]` in the AppComponent spec file.
+    - Move the HTML content of app.component.html to home.component.html
+    - Add `schemas: [NO_ERRORS_SCHEMA]` in the AppComponent spec file.
