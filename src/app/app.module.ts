@@ -21,6 +21,7 @@ import { MessageService } from './shared/services/message.service';
 import { metaReducers, reducers } from './store';
 import { MessageEffects } from './store/effects/messages.effects';
 import { MessageInputComponent } from './components/messages/message-input/message-input.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MessageInputComponent } from './components/messages/message-input/messa
     MessagesComponent,
     MessageListComponent,
     MessageItemComponent,
-    MessageInputComponent
+    MessageInputComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
