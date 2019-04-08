@@ -6,17 +6,25 @@ export interface MessageState {
 }
 
 export const initState: MessageState = {
-  all: null,
-}
+  all: null
+};
 
-export function messagesReducer( state: MessageState = initState, action ) {
-  switch( action.type ) {
+export function messagesReducer(state: MessageState = initState, action) {
+  switch (action.type) {
     case ActionTypes.GetAllMessagesSuccess:
       const all = action.messages;
       return {
         ...state,
         all
-      }
+      };
+    case ActionTypes.PostMessageSuccess:
+      const messages = !state.all
+        ? [action.message]
+        : [...state.all, action.message];
+      return {
+        ...state,
+        all: messages
+      };
     default:
       return state;
   }
