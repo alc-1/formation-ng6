@@ -20,6 +20,7 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
 import { MessageService } from './shared/services/message.service';
 import { metaReducers, reducers } from './store';
 import { MessageEffects } from './store/effects/messages.effects';
+import { MessageInputComponent } from './components/messages/message-input/message-input.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MessageEffects } from './store/effects/messages.effects';
     LoginFormComponent,
     MessagesComponent,
     MessageListComponent,
-    MessageItemComponent
+    MessageItemComponent,
+    MessageInputComponent
   ],
   imports: [
     BrowserModule,
