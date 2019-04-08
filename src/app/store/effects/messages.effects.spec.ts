@@ -52,4 +52,42 @@ describe('Message Effects', () => {
     });
   });
 
+  describe('With errors', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [
+          MessageEffects,
+          provideMockActions(() => actions$),
+          MessageService,
+          { provide: Http, useValue: httpStubWithError }
+        ]
+      });
+
+      effects = TestBed.get(MessageEffects);
+    });
+
+    it('should be created', () => {
+      expect(effects).toBeTruthy();
+    });
+
+    it('GetAllMessages action should catch a MessageError', () => {
+      const action = new actions.GetAllMessages();
+      const completion = new actions.MessageError('Message error');
+
+      actions$ = hot('--a', { a: action });
+      const expected = cold('--b', { b: completion });
+
+      expect(effects.getAllMessages$).toBeObservable(expected);
+    });
+
+    it('PostMessage action should catch a MessageError', () => {
+      const action = new actions.PostMessage(testMessage);
+      const completion = new actions.MessageError('Message error');
+
+      actions$ = hot('--a', { a: action });
+      const expected = cold('--b', { b: completion });
+
+      expect(effects.postMessage$).toBeObservable(expected);
+    });
+  });
 });
