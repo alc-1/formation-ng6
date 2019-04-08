@@ -24,14 +24,22 @@ export const testMessage = new Message('Toto', 'Salut');
  */
 export const messageState: MessageState = {
   all: testMessages,
+  error: null
 };
 
 export const messageStateWithTwoMessages: MessageState = {
   all: twoTestMessages,
+  error: null
 };
+
+export const messageStateWithError: MessageState = {
+  all: testMessages,
+  error: 'Error message'
+}
 
 export const messageStateWithoutMessages: MessageState = {
   all: null,
+  error: null
 };
 
 /**
@@ -60,15 +68,15 @@ export const appStateWithoutMessages: AppState = {
 
 export const appStateWithError: AppState = {
   login: null,
-  messages: null,
+  messages: messageStateWithError,
 }
 
 export const appStateWithUser: AppState = {
   login: loginState,
-  messages: null,
+  messages: messageStateWithError,
 }
 
 export const appStateWithoutUser: AppState = {
   login: loginStateWithoutUser,
-  messages: null,
+  messages: messageStateWithError,
 }
