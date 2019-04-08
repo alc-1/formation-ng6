@@ -1,8 +1,11 @@
-import { appState, appStateWithoutMessages } from 'src/app/store/state.test.data';
+import {
+  appState,
+  appStateWithError,
+  appStateWithoutMessages
+} from 'src/app/store/state.test.data';
 import * as Selectors from './messages.selectors';
 
 describe('Messages selectors', () => {
-
   it('should return the messages part of the state', () => {
     expect(Selectors.messageState$(appState)).toBe(appState.messages);
   });
@@ -19,4 +22,11 @@ describe('Messages selectors', () => {
     expect(Selectors.areMessagesLoaded$(appStateWithoutMessages)).toBeFalsy();
   });
 
+  it('should return the messages part of the state', () => {
+    expect(Selectors.error$(appState)).toBeNull();
+  });
+
+  it('should return the messages part of the state', () => {
+    expect(Selectors.error$(appStateWithError)).toBe('Error message');
+  });
 });
